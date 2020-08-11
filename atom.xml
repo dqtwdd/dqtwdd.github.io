@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-10T08:11:22.441Z</updated>
+  <updated>2020-08-11T05:39:01.282Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>两数之和</title>
+    <link href="http://yoursite.com/2020/08/11/twoSum/"/>
+    <id>http://yoursite.com/2020/08/11/twoSum/</id>
+    <published>2020-08-11T03:24:47.677Z</published>
+    <updated>2020-08-11T05:39:01.282Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。&lt;br&gt;你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。&lt;br&gt;示例:&lt;br&gt;给定 nums = [2, 7, 11,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>卡牌分组问题，求最大公约数</title>
