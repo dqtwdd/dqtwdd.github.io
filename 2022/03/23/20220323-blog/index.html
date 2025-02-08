@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20220323-blog"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20220323-blog" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   博客改版
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2022/03/23/20220323-blog/" class="article-date">
@@ -104,7 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -117,19 +109,16 @@
       </script> -->
       <p>最近学了异常处理，学了nginx，学了koa，学了http2，然后想把自己的博客改改版把最近学的东西串一下。</p>
 <span id="more"></span>
-<h3 id="1-整体架构">1. 整体架构</h3>
-<p>技术栈：hexo+koa+nginx+vue3+vite+element-plus+mysql</p>
+
+<h3 id="1-整体架构"><a href="#1-整体架构" class="headerlink" title="1. 整体架构"></a>1. 整体架构</h3><p>技术栈：hexo+koa+nginx+vue3+vite+element-plus+mysql</p>
 <p>展示端页面不单独开发，直接使用hexo框架打包后的文件。</p>
 <p>后端接口使用koa。</p>
 <p>服务器使用nginx进行反向代理，实现https+http2 。</p>
 <p>后台计划使用vue3+vite+element-plus简单搭一下。</p>
 <p>服务器还没看，这个先往后放，先不入库，先把接口调通。</p>
-<h3 id="1-需求">1.需求</h3>
-<h4 id="1-1-文章统计">1.1 文章统计</h4>
-<p>文章统计主要记录哪篇文章被点击过。</p>
+<h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1.需求"></a>1.需求</h3><h4 id="1-1-文章统计"><a href="#1-1-文章统计" class="headerlink" title="1.1 文章统计"></a>1.1 文章统计</h4><p>文章统计主要记录哪篇文章被点击过。</p>
 <p>实现方案就是前端搞个sdk，文章标题应该有固定的class，通过这个或者访问文章里面的页面时候调一次接口。</p>
-<h4 id="1-2-错误上报">1.2 错误上报</h4>
-<p>也是搞个sdk，然后监听报错啥的。</p>
+<h4 id="1-2-错误上报"><a href="#1-2-错误上报" class="headerlink" title="1.2 错误上报"></a>1.2 错误上报</h4><p> 也是搞个sdk，然后监听报错啥的。</p>
  
       <!-- reward -->
       
@@ -142,8 +131,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -192,8 +180,7 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -264,7 +251,6 @@
   }
 </style>
 
- 
      
 </article>
 

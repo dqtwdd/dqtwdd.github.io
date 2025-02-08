@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20210926-slidingWindow"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20210926-slidingWindow" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   滑动窗口
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2021/09/26/20210926-slidingWindow/" class="article-date">
@@ -104,7 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -118,6 +110,7 @@
       <p>本文简单解释一下滑动窗口。</p>
 <p>参考文档：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6854573218683387917#heading-1">你还在为 TCP 重传、滑动窗口、流量控制、拥塞控制发愁吗？</a></p>
 <span id="more"></span>
+
 <p>先看一个三次握手的动图：</p>
 <p><img src="https://dqtwdd.top/cdn/img/tcp.awebp" alt="tcp"></p>
 <p>先简单说一下这几个参数的意义：</p>
@@ -132,13 +125,11 @@
 <li>在数据通信中，接收站发给发送站的一种传输类控制字符。表示发来的数据已确认接收无误。在 TCP/IP 协议中，如果接收方成功的接收到数据，那么会回复一个 ACK 数据。</li>
 </ul>
 <p>数据本身是有顺序的，tcp 链接的特点就是可靠。可靠，就指的是发送的数据每个都会被接受，并且是按顺序的，不会丢包，这时我们就会有一个疑问：</p>
-<h3 id="如何保证数据传输的次序？">如何保证数据传输的次序？</h3>
-<p>简单的说就是主机 A 先发送一段数据，然后主机 B 收到之后返回一个 ACK（确认字符），然后主机 A 收到之后再发送下一段数据。</p>
+<h3 id="如何保证数据传输的次序？"><a href="#如何保证数据传输的次序？" class="headerlink" title="如何保证数据传输的次序？"></a>如何保证数据传输的次序？</h3><p>简单的说就是主机 A 先发送一段数据，然后主机 B 收到之后返回一个 ACK（确认字符），然后主机 A 收到之后再发送下一段数据。</p>
 <p>因为每次发送数据都需要接收的主机返回 ACK，这样虽然解决了丢包、出错、乱序等问题，但是这样也出现了新问题：吞吐量低。</p>
 <p>正常数据传输的过程如下：</p>
 <p><img src="https://dqtwdd.top/cdn/img/sendData.awebp" alt="sendData"></p>
-<h3 id="如何提高吞吐量？">如何提高吞吐量？</h3>
-<p>提高吞吐量，就很自然的回到我们本文的重点：滑动窗口。</p>
+<h3 id="如何提高吞吐量？"><a href="#如何提高吞吐量？" class="headerlink" title="如何提高吞吐量？"></a>如何提高吞吐量？</h3><p>提高吞吐量，就很自然的回到我们本文的重点：滑动窗口。</p>
 <p><img src="https://dqtwdd.top/cdn/img/slidingWindow.awebp" alt="slidingWindow"></p>
 <p>如上图，我们已经完成了 1/2/3 三段数据的传输，当前窗口处于 4-10，其中 4/5/6/7 已经发送，8/9/10 还未发送。</p>
 <p>这个滑动窗口的大小是可以变化的，且滑动窗口的大小由服务端能接受的大小来控制。</p>
@@ -146,24 +137,19 @@
 <p><img src="https://dqtwdd.top/cdn/img/slidingWindow1.awebp" alt="slidingWindow1"></p>
 <p>正常情况的滑动窗口就是这样工作了，但是我们可以发现一个新的问题：</p>
 <p>窗口的滑动是由窗口内第一个数据是否接收到确认字符来决定的，也就是说，5-11 这段窗口内 6-11 的数据全部发送完成，并且接收到确认字符，但是数据 5 发生了丢包或者确认字符丢失，整个窗口就滑不动了，数据传输陷入了瘫痪，这显然是我们不能接受的，该如何解决呢？</p>
-<h3 id="滑动窗口的重传机制">滑动窗口的重传机制</h3>
-<ol>
-<li>
-<p>超时重传</p>
+<h3 id="滑动窗口的重传机制"><a href="#滑动窗口的重传机制" class="headerlink" title="滑动窗口的重传机制"></a>滑动窗口的重传机制</h3><ol>
+<li><p>超时重传</p>
 <p>超时重传的核心就是设置一个重传时间，一个数据发送后，一旦时间超过重传时间并且没有收到 ACK 返回，就立即重新发送请求。</p>
 <p>如何配置重传时间也有其一套合理的算法，具体算法可以查看本文参考。</p>
 </li>
-<li>
-<p>快速重传</p>
+<li><p>快速重传</p>
 <p>快速重传就是将重传的标准由时间改为接收 ACK 的顺序。</p>
 <p>比如，上图中 5-11 段的数据都已经发送，但是数据 5/7 的数据没有收到 ACK，但是后发送的 11 的数据都已经收到了 ACK，我们就可以直接重新发送 5/7 两段数据。</p>
 </li>
-<li>
-<p>SACK（ Selective Acknowledgment 选择性确认）</p>
+<li><p>SACK（ Selective Acknowledgment 选择性确认）</p>
 <p>SACK 就是在 TCP 头部选项里加一个 SACK 字段，将哪段数据收到哪段数据没收到数据跟随 ACK 返回数据发送方，这样发送方就知道该发送哪段数据。</p>
 </li>
-<li>
-<p>D-SACK（Duplicate SACK 二重的选择性确认）</p>
+<li><p>D-SACK（Duplicate SACK 二重的选择性确认）</p>
 <p>D-SACK 和 SACK 相比可以将重复接收的数据返回告诉发送端，让发送方知道是发出去的包丢了，还是接收方的 ACK 包丢了。可以知道是不是发送方的数据包被网络延迟了。等等。</p>
 </li>
 </ol>
@@ -179,8 +165,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -229,8 +214,7 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -246,9 +230,9 @@
       </a>
     
     
-      <a href="/2021/08/30/20210830-waterMark/" class="article-nav-link">
+      <a href="/2021/08/30/20210830-pha/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">加水印</div>
+        <div class="article-nav-title">pha工作流程</div>
       </a>
     
   </nav>
@@ -301,7 +285,6 @@
   }
 </style>
 
- 
      
 </article>
 

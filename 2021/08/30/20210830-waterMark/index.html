@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20210830-waterMark"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20210830-waterMark" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   加水印
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2021/08/30/20210830-waterMark/" class="article-date">
@@ -79,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">960</span>
+            <span class="post-count">962</span>
         </span>
     </span>
 
@@ -88,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -115,6 +107,7 @@
       </script> -->
       <p>自己写的加水印小插件的思路。</p>
 <span id="more"></span>
+
 <p>之前组内大佬写了一个加水印的小工具，对原理比较好奇，所以自己尝试写了一下。</p>
 <p>先附上一个最后的效果。</p>
 <p><img src="https://dqtwdd.top/cdn/img/20210903154808.png" alt="end"></p>
@@ -127,7 +120,7 @@
 </ol>
 <p>装大象一样，经过简略的思考，想到其实加水印这个简单的问题也只需要三步：</p>
 <ol>
-<li>在页面创建时创建一个 dom 层。（<code>let dom = document.createElement('div')</code>）</li>
+<li>在页面创建时创建一个 dom 层。（<code>let dom = document.createElement(&#39;div&#39;)</code>）</li>
 <li>将要设置为水印的文字/图片设置为 dom 背景。(<code>dom.style.backgroundColor = red</code>)</li>
 <li>将 dom 挂载在需要打水印的节点上。(<code>document.body.appendChild(dom);</code>)</li>
 </ol>
@@ -145,30 +138,25 @@
 <p>至于文字，我们可以使用<code>canvas</code>，将文字写在<code>canvas</code>之后将带有文字的画布作为图片输入，然后当作背景图片设置为水印层的背景图。</p>
 <p>附上完整代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./watermark.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">waterMark</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> waterMarkDom = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">  waterMarkDom.<span class="property">className</span> = <span class="string">&#x27;watermark&#x27;</span>;</span><br><span class="line">  waterMarkDom.<span class="title function_">setAttribute</span>(<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;waterMark&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;canvas&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line">  ctx.<span class="title function_">rotate</span>((<span class="number">20</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">180</span>);</span><br><span class="line">  ctx.<span class="property">font</span> = <span class="string">&#x27;30px Arial&#x27;</span>;</span><br><span class="line">  ctx.<span class="title function_">fillText</span>(<span class="string">&#x27;Hello World&#x27;</span>, <span class="number">10</span>, <span class="number">30</span>);</span><br><span class="line">  <span class="keyword">let</span> tempSrc = canvas.<span class="title function_">toDataURL</span>(<span class="string">&#x27;image/png&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">  img.<span class="property">src</span> = tempSrc;</span><br><span class="line"></span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">backgroundImage</span> = <span class="string">`URL(<span class="subst">$&#123;tempSrc&#125;</span>)`</span>; <span class="comment">//设置背景图的的地址</span></span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">backgroundRepeat</span> = <span class="string">&#x27;repeat&#x27;</span>; <span class="comment">//设置背景不平铺</span></span><br><span class="line">  <span class="comment">// waterMarkDom.style.backgroundPosition = &#x27;center&#x27;; //设置背景图的位置</span></span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">pointerEvents</span> = <span class="string">&#x27;none&#x27;</span>;</span><br><span class="line">  <span class="comment">// waterMarkDom.appendChild(img);</span></span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">position</span> = <span class="string">&#x27;fixed&#x27;</span>;</span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">top</span> = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">left</span> = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">right</span> = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">bottom</span> = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">  waterMarkDom.<span class="property">style</span>.<span class="property">opacity</span> = <span class="string">&#x27;0.5&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> shadow = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">  <span class="keyword">let</span> shadowDom = shadow.<span class="title function_">attachShadow</span>(&#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;open&#x27;</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  shadowDom.<span class="title function_">append</span>(waterMarkDom);</span><br><span class="line"></span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(shadow);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">drawBackgroundTxt</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> c = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;myCanvas&#x27;</span>);</span><br><span class="line">  <span class="keyword">var</span> ctx = c.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line">  ctx.<span class="property">font</span> = <span class="string">&#x27;30px Arial&#x27;</span>;</span><br><span class="line">  ctx.<span class="title function_">fillText</span>(<span class="string">&#x27;Hello World&#x27;</span>, <span class="number">10</span>, <span class="number">50</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// waterMark.css</span></span><br><span class="line">.<span class="property">watermark</span> &#123;</span><br><span class="line">  <span class="attr">position</span>: fixed;</span><br><span class="line">  <span class="attr">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">opacity</span>: <span class="number">0.5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>基本的功能就已经开发完毕了，然后继续思考一下有哪些优化点：</p>
 <ol>
-<li>
-<p>水印文字的配置，包括但不限于字体/字号/文字倾斜度/颜色/透明度/粗细等等。</p>
+<li><p>水印文字的配置，包括但不限于字体/字号/文字倾斜度/颜色/透明度/粗细等等。</p>
 </li>
-<li>
-<p>配置水印挂载的 dom。</p>
+<li><p>配置水印挂载的 dom。</p>
 </li>
-<li>
-<p>是否将水印加密，加密方法。</p>
+<li><p>是否将水印加密，加密方法。</p>
 </li>
-<li>
-<p>文字在画布中的偏移量。</p>
+<li><p>文字在画布中的偏移量。</p>
 </li>
-<li>
-<p>使用<code>canvas</code>的转换的图片是 base64，当使用 js 设置水印的背景属性之后，dom 会显示的非常臃肿，很不美观：</p>
+<li><p>使用<code>canvas</code>的转换的图片是 base64，当使用 js 设置水印的背景属性之后，dom 会显示的非常臃肿，很不美观：</p>
 <p><img src="https://dqtwdd.top/cdn/img/20210903170616.png" alt="dom"></p>
 <p>可以配置使用<code>shadowDom</code>来改善这个情况：</p>
 <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM">shadowDom</a></p>
 <p>使用<code>shadowDom</code>后：<img src="https://dqtwdd.top/cdn/img/20210903171332.png" alt="shadowDom"></p>
 <p>这样看起来就美观很多了。</p>
 </li>
-<li>
-<p>前端做水印一个最大的隐患就是安全性的问题，懂一点前端的人都知道可以打开控制台，通过修改 css 隐藏水印，这时我们可以通过使用<code>Mutation Observer API</code>监听 dom 的变化，在 dom 变化时让页面报错或者阻止页面重绘，比如：</p>
+<li><p>前端做水印一个最大的隐患就是安全性的问题，懂一点前端的人都知道可以打开控制台，通过修改 css 隐藏水印，这时我们可以通过使用<code>Mutation Observer API</code>监听 dom 的变化，在 dom 变化时让页面报错或者阻止页面重绘，比如：</p>
 <p><img src="https://dqtwdd.top/cdn/img/mutation.gif" alt="mutation"></p>
 <p>但是这个做法也不是完全安全的，可以通过禁止 js 执行或者隐藏元素等方法绕过。</p>
 </li>
@@ -186,8 +174,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -236,26 +223,25 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2021/09/26/20210926-slidingWindow/" class="article-nav-link">
+      <a href="/2021/08/30/20210830-pha/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            滑动窗口
+            pha工作流程
           
         </div>
       </a>
     
     
-      <a href="/2021/08/30/20210830-pha/" class="article-nav-link">
+      <a href="/2021/08/16/20210816-wifeInterview/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">pha工作流程</div>
+        <div class="article-nav-title">董大宝的面试算法总结</div>
       </a>
     
   </nav>
@@ -308,7 +294,6 @@
   }
 </style>
 
- 
      
 </article>
 

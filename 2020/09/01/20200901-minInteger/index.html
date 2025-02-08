@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20200901-minInteger"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20200901-minInteger" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   最多 K 次交换相邻数位后得到的最小整数
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2020/09/01/20200901-minInteger/" class="article-date">
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -117,28 +109,13 @@
 <p>你可以交换这个整数相邻数位的数字 最多  k  次。</p>
 <p>请你返回你能得到的最小整数，并以字符串形式返回。</p>
 <span id="more"></span>
-<p>示例 1：<br>
-输入：num = “4321”, k = 4<br>
-输出：“1342”<br>
-解释：4321 通过 4 次交换相邻数位得到最小整数的步骤如上图所示。</p>
-<p>示例 2：<br>
-输入：num = “100”, k = 1<br>
-输出：“010”<br>
-解释：输出可以包含前导 0 ，但输入保证不会有前导 0 。</p>
-<p>示例 3：<br>
-输入：num = “36789”, k = 1000<br>
-输出：“36789”<br>
-解释：不需要做任何交换。</p>
-<p>示例 4：<br>
-输入：num = “22”, k = 22<br>
-输出：“22”</p>
-<p>示例 5：<br>
-输入：num = “9438957234785635408”, k = 23<br>
-输出：“0345989723478563548”</p>
-<p>提示：<br>
-1 &lt;= num.length &lt;= 30000<br>
-num  只包含   数字   且不含有   前导 0 。<br>
-1 &lt;= k &lt;= 10^9</p>
+
+<p>示例 1：<br>输入：num = “4321”, k = 4<br>输出：”1342”<br>解释：4321 通过 4 次交换相邻数位得到最小整数的步骤如上图所示。</p>
+<p>示例 2：<br>输入：num = “100”, k = 1<br>输出：”010”<br>解释：输出可以包含前导 0 ，但输入保证不会有前导 0 。</p>
+<p>示例 3：<br>输入：num = “36789”, k = 1000<br>输出：”36789”<br>解释：不需要做任何交换。</p>
+<p>示例 4：<br>输入：num = “22”, k = 22<br>输出：”22”</p>
+<p>示例 5：<br>输入：num = “9438957234785635408”, k = 23<br>输出：”0345989723478563548”</p>
+<p>提示：<br>1 &lt;= num.length &lt;= 30000<br>num  只包含   数字   且不含有   前导 0 。<br>1 &lt;= k &lt;= 10^9</p>
 <p>来了来了！力扣征途中第一道困难题！出现了！！！！！</p>
 <p>虽然没跑过。哈哈哈。</p>
 <p>测试用例太大了，但是思路和方法应该没问题，所差的就是不是最优解，因为不太了解树状数组结构，以后学习一哈。</p>
@@ -151,6 +128,7 @@ num  只包含   数字   且不含有   前导 0 。<br>
 <p>鼓掌！</p>
 <p><img src="https://s1.ax1x.com/2020/09/01/dxkMlj.md.png" alt="解法拓扑图"></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">num</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">k</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minInteger = <span class="keyword">function</span> (<span class="params">num, k</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> numArr = num.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// 将num转化为数组</span></span><br><span class="line">  <span class="comment">// 获取右侧指针位置，由于arr.slice(i,j)方法截取的是从i位置到j位置之前的数组，所以将右侧指针+1</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; numArr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> r = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> (k &gt; numArr.<span class="property">length</span> - i) &#123;</span><br><span class="line">      r = numArr.<span class="property">length</span> + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      r = i + k + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// console.log(&#x27;i:&#x27;, i, &#x27;r:&#x27;, r, &#x27;numArr.slice(i, r):&#x27;, numArr.slice(i, r))</span></span><br><span class="line">    <span class="comment">// 获取当前视窗之内的数组</span></span><br><span class="line">    <span class="keyword">let</span> newArr = numArr.<span class="title function_">slice</span>(i, r)</span><br><span class="line">    <span class="comment">// 获取当前视窗数组之内的最小值</span></span><br><span class="line">    <span class="keyword">let</span> min = <span class="title class_">Math</span>.<span class="title function_">min</span>(...newArr) + <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="comment">// 获取当前视窗数组之内的最小值的下标index，index + i为当前获取当前视窗数组之内的最小值在完整数组中的下标</span></span><br><span class="line">    <span class="keyword">let</span> minIndex = newArr.<span class="title function_">indexOf</span>(min) + i</span><br><span class="line">    <span class="comment">// console.log(&#x27;min:&#x27;, min, &#x27;minIndex:&#x27;, minIndex)</span></span><br><span class="line">    <span class="comment">// 获取当前视窗数组之内的最小值</span></span><br><span class="line">    <span class="keyword">let</span> temp = numArr[minIndex]</span><br><span class="line">    <span class="comment">// 删除数组中的当前视窗数组之内的最小值</span></span><br><span class="line">    numArr.<span class="title function_">splice</span>(minIndex, <span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 将当前视窗数组之内的最小值插入到右侧指针处</span></span><br><span class="line">    numArr.<span class="title function_">splice</span>(i, <span class="number">0</span>, temp)</span><br><span class="line">    <span class="comment">// 更新k值</span></span><br><span class="line">    k = k - (minIndex - i)</span><br><span class="line">    <span class="comment">// console.log(&#x27;numArr:&#x27;, numArr, &#x27;k:&#x27;, k)</span></span><br><span class="line">    <span class="comment">// 当k为0时返回</span></span><br><span class="line">    <span class="keyword">if</span> (k === <span class="number">0</span>) <span class="keyword">return</span> numArr.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遍历完成后返回</span></span><br><span class="line">  <span class="keyword">return</span> numArr.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="string">&#x27;51423&#x27;</span></span><br><span class="line"><span class="keyword">let</span> k = <span class="number">4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">minInteger</span>(num, k))</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 更新后的算法。以后尽量不要操作数组。</span></span><br><span class="line"><span class="keyword">var</span> minInteger = <span class="keyword">function</span> (<span class="params">num, k</span>) &#123;</span><br><span class="line">  <span class="comment">// 获取最大循环次数</span></span><br><span class="line">  <span class="keyword">let</span> maxExchange = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; num.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    maxExchange += i</span><br><span class="line">  &#125;</span><br><span class="line">  k = <span class="title class_">Math</span>.<span class="title function_">min</span>(k, maxExchange)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> r = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> (k &gt; num.<span class="property">length</span> - i) &#123;</span><br><span class="line">      r = num.<span class="property">length</span> + <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      r = i + k + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> newArr = num.<span class="title function_">substring</span>(i, r)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取当前视窗内数组的最小值，做题时拒绝使用Math方法</span></span><br><span class="line">    <span class="keyword">let</span> min = newArr[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">let</span> minIndex = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; newArr.<span class="property">length</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> cur = newArr[j]</span><br><span class="line">      cur &lt; min ? ((min = cur), (minIndex = j + i)) : <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 增加判断，只有当前最小值的位置坐标在右指针后面时才执行里面的代码</span></span><br><span class="line">    <span class="keyword">if</span> (minIndex &gt; i) &#123;</span><br><span class="line">      <span class="comment">// 之前没跑过的原因就在这里，原来的做法是操作数组，最后再合并成字符串，这样在测试用例很大时非常吃内存，也给我提了一个醒，能操作字符串就不要去操作数组。</span></span><br><span class="line">      num =</span><br><span class="line">        num.<span class="title function_">substring</span>(<span class="number">0</span>, i) +</span><br><span class="line">        num[minIndex] +</span><br><span class="line">        num.<span class="title function_">substring</span>(i, minIndex) +</span><br><span class="line">        num.<span class="title function_">substring</span>(minIndex + <span class="number">1</span>)</span><br><span class="line">      k = k - (minIndex - i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (k === <span class="number">0</span>) <span class="keyword">return</span> num</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> num</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
@@ -164,8 +142,7 @@ num  只包含   数字   且不含有   前导 0 。<br>
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -214,8 +191,7 @@ num  只包含   数字   且不含有   前导 0 。<br>
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -286,7 +262,6 @@ num  只包含   数字   且不含有   前导 0 。<br>
   }
 </style>
 
- 
      
 </article>
 

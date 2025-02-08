@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20211213-min-stack"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20211213-min-stack" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   最小栈
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2021/12/13/20211213-min-stack/" class="article-date">
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -115,6 +107,7 @@
       </script> -->
       <p>设计一个能返回最小值的栈</p>
 <span id="more"></span>
+
 <p>设计一个支持 <code>push</code> ，<code>pop</code> ，<code>top</code> 操作，并能在常数时间内检索到最小元素的栈。</p>
 <ul>
 <li><code>push(x)</code> —— 将元素 x 推入栈中。</li>
@@ -124,11 +117,13 @@
 </ul>
 <p><strong>示例:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">[&quot;MinStack&quot;,&quot;push&quot;,&quot;push&quot;,&quot;push&quot;,&quot;getMin&quot;,&quot;pop&quot;,&quot;top&quot;,&quot;getMin&quot;]</span><br><span class="line">[[],[-2],[0],[-3],[],[],[],[]]</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">[null,null,null,null,-3,null,0,-2]</span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line">MinStack minStack = new MinStack();</span><br><span class="line">minStack.push(-2);</span><br><span class="line">minStack.push(0);</span><br><span class="line">minStack.push(-3);</span><br><span class="line">minStack.getMin();   --&gt; 返回 -3.</span><br><span class="line">minStack.pop();</span><br><span class="line">minStack.top();      --&gt; 返回 0.</span><br><span class="line">minStack.getMin();   --&gt; 返回 -2.</span><br></pre></td></tr></table></figure>
+
 <p><strong>提示：</strong></p>
 <ul>
 <li><code>pop</code>、<code>top</code> 和 <code>getMin</code> 操作总是在 <strong>非空栈</strong> 上调用。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">MinStack</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stack</span> = []</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">minList</span> = []</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">val</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">MinStack</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">push</span> = <span class="keyword">function</span>(<span class="params">val</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (val &lt; <span class="variable language_">this</span>.<span class="property">minList</span>[<span class="variable language_">this</span>.<span class="property">minList</span>.<span class="property">length</span>-<span class="number">1</span>] || <span class="variable language_">this</span>.<span class="property">minList</span>[<span class="variable language_">this</span>.<span class="property">minList</span>.<span class="property">length</span>-<span class="number">1</span>] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">minList</span>.<span class="title function_">push</span>(val)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">minList</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="property">minList</span>[<span class="variable language_">this</span>.<span class="property">minList</span>.<span class="property">length</span>-<span class="number">1</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stack</span>.<span class="title function_">push</span>(val)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">MinStack</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">pop</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stack</span>.<span class="title function_">pop</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">minList</span>.<span class="title function_">pop</span>()</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">MinStack</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">top</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">stack</span>[<span class="variable language_">this</span>.<span class="property">stack</span>.<span class="property">length</span>-<span class="number">1</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">MinStack</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getMin</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">minList</span>[<span class="variable language_">this</span>.<span class="property">minList</span>.<span class="property">length</span> - <span class="number">1</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * var obj = new MinStack()</span></span><br><span class="line"><span class="comment"> * obj.push(val)</span></span><br><span class="line"><span class="comment"> * obj.pop()</span></span><br><span class="line"><span class="comment"> * var param_3 = obj.top()</span></span><br><span class="line"><span class="comment"> * var param_4 = obj.getMin()</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
  
       <!-- reward -->
       
@@ -141,8 +136,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -191,8 +185,7 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -263,7 +256,6 @@
   }
 </style>
 
- 
      
 </article>
 

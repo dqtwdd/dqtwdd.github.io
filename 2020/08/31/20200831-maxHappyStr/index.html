@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20200831-maxHappyStr"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20200831-maxHappyStr" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   最长快乐字符串
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2020/08/31/20200831-maxHappyStr/" class="article-date">
@@ -79,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">638</span>
+            <span class="post-count">636</span>
         </span>
     </span>
 
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -113,43 +105,23 @@
           console.log('pathname', title, location.pathname.length);
         }
       </script> -->
-      <p>如果字符串中不含有任何 ‘aaa’，‘bbb’ 或 ‘ccc’ 这样的字符串作为子串，那么该字符串就是一个「快乐字符串」。</p>
+      <p>如果字符串中不含有任何 ‘aaa’，’bbb’ 或 ‘ccc’ 这样的字符串作为子串，那么该字符串就是一个「快乐字符串」。</p>
 <p>给你三个整数 a，b ，c，请你返回 任意一个 满足下列全部条件的字符串 s：</p>
-<p>s 是一个尽可能长的快乐字符串。<br>
-s 中 最多 有 a 个字母 ‘a’、b  个字母 ‘b’、c 个字母 ‘c’ 。<br>
-s 中只含有 ‘a’、‘b’ 、‘c’ 三种字母。<br>
-如果不存在这样的字符串 s ，请返回一个空字符串 “”。</p>
+<p>s 是一个尽可能长的快乐字符串。<br>s 中 最多 有 a 个字母 ‘a’、b  个字母 ‘b’、c 个字母 ‘c’ 。<br>s 中只含有 ‘a’、’b’ 、’c’ 三种字母。<br>如果不存在这样的字符串 s ，请返回一个空字符串 “”。</p>
 <span id="more"></span>
+
 <p>示例 1：</p>
-<p>输入：a = 1, b = 1, c = 7<br>
-输出：“ccaccbcc”<br>
-解释：“ccbccacc” 也是一种正确答案。<br>
-示例 2：</p>
-<p>输入：a = 2, b = 2, c = 1<br>
-输出：“aabbc”<br>
-示例 3：</p>
-<p>输入：a = 7, b = 1, c = 0<br>
-输出：“aabaa”<br>
-解释：这是该测试用例的唯一正确答案。</p>
+<p>输入：a = 1, b = 1, c = 7<br>输出：”ccaccbcc”<br>解释：”ccbccacc” 也是一种正确答案。<br>示例 2：</p>
+<p>输入：a = 2, b = 2, c = 1<br>输出：”aabbc”<br>示例 3：</p>
+<p>输入：a = 7, b = 1, c = 0<br>输出：”aabaa”<br>解释：这是该测试用例的唯一正确答案。</p>
 <p>提示：</p>
-<p>0 &lt;= a, b, c &lt;= 100<br>
-a + b + c &gt; 0</p>
+<p>0 &lt;= a, b, c &lt;= 100<br>a + b + c &gt; 0</p>
 <p>示例 1：</p>
-<p>输入：A = [4,2,3], K = 1<br>
-输出：5<br>
-解释：选择索引 (1,) ，然后 A 变为 [4,-2,3]。<br>
-示例 2：</p>
-<p>输入：A = [3,-1,0,2], K = 3<br>
-输出：6<br>
-解释：选择索引 (1, 2, 2) ，然后 A 变为 [3,1,0,2]。<br>
-示例 3：</p>
-<p>输入：A = [2,-3,-1,5,-4], K = 2<br>
-输出：13<br>
-解释：选择索引 (1, 4) ，然后 A 变为 [2,3,-1,5,4]。</p>
+<p>输入：A = [4,2,3], K = 1<br>输出：5<br>解释：选择索引 (1,) ，然后 A 变为 [4,-2,3]。<br>示例 2：</p>
+<p>输入：A = [3,-1,0,2], K = 3<br>输出：6<br>解释：选择索引 (1, 2, 2) ，然后 A 变为 [3,1,0,2]。<br>示例 3：</p>
+<p>输入：A = [2,-3,-1,5,-4], K = 2<br>输出：13<br>解释：选择索引 (1, 4) ，然后 A 变为 [2,3,-1,5,4]。</p>
 <p>提示：</p>
-<p>1 &lt;= A.length &lt;= 10000<br>
-1 &lt;= K &lt;= 10000<br>
--100 &lt;= A[i] &lt;= 100</p>
+<p>1 &lt;= A.length &lt;= 10000<br>1 &lt;= K &lt;= 10000<br>-100 &lt;= A[i] &lt;= 100</p>
 <p>今天分享的是一道最长快乐字符串，做这道题，有一个非常重要的思路，就是当前要开始增加的字符串是次长的字符串时，要每次加一个。</p>
 <p>给我的启示就是做一道题的时候一定要找到正确的思路然后再开始搞代码，然后才 ok，不然路子就走歪了，怎么写都是错的。</p>
 <p><img src="https://s1.ax1x.com/2020/08/31/dL6lBn.png" alt="解法拓扑图"></p>
@@ -166,8 +138,7 @@ a + b + c &gt; 0</p>
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -216,26 +187,25 @@ a + b + c &gt; 0</p>
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2020/08/31/20200831-numWaterBottles/" class="article-nav-link">
+      <a href="/2020/08/31/20200831-canArrange/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            换酒问题
+            检查数组对是否可以被 k 整除
           
         </div>
       </a>
     
     
-      <a href="/2020/08/25/20200825-largestSumAfterKNegations/" class="article-nav-link">
+      <a href="/2020/08/31/20200831-numWaterBottles/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">K 次取反后最大化的数组和</div>
+        <div class="article-nav-title">换酒问题</div>
       </a>
     
   </nav>
@@ -288,7 +258,6 @@ a + b + c &gt; 0</p>
   }
 </style>
 
- 
      
 </article>
 

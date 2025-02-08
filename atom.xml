@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dqtwdd.gitee.io/"/>
-  <updated>2025-02-08T08:44:34.735Z</updated>
+  <updated>2024-05-06T07:14:27.795Z</updated>
   <id>https://dqtwdd.gitee.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>问题总结</title>
-    <link href="https://dqtwdd.gitee.io/2024/05/06/20250207-interview/"/>
-    <id>https://dqtwdd.gitee.io/2024/05/06/20250207-interview/</id>
+    <title>简洁的log</title>
+    <link href="https://dqtwdd.gitee.io/2024/05/06/20240506-autolog/"/>
+    <id>https://dqtwdd.gitee.io/2024/05/06/20240506-autolog/</id>
     <published>2024-05-05T16:00:00.000Z</published>
-    <updated>2025-02-08T08:44:34.735Z</updated>
+    <updated>2024-05-06T07:14:27.795Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h3 id=&quot;1-函数柯里化&quot;&gt;1. 函数柯里化&lt;/h3&gt;
+          &lt;p&gt; 简洁的log&lt;/p&gt;
 &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
         
       
@@ -45,11 +45,11 @@
   </entry>
   
   <entry>
-    <title>简洁的log</title>
-    <link href="https://dqtwdd.gitee.io/2024/05/06/20240506-autolog/"/>
-    <id>https://dqtwdd.gitee.io/2024/05/06/20240506-autolog/</id>
+    <title>问题总结</title>
+    <link href="https://dqtwdd.gitee.io/2024/05/06/20250207-interview/"/>
+    <id>https://dqtwdd.gitee.io/2024/05/06/20250207-interview/</id>
     <published>2024-05-05T16:00:00.000Z</published>
-    <updated>2024-05-06T07:14:27.795Z</updated>
+    <updated>2025-02-08T08:44:34.735Z</updated>
     
     <summary type="html">
     
@@ -57,8 +57,7 @@
       
         
         
-          &lt;p&gt;简洁的log&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+          &lt;h3 id=&quot;1-函数柯里化&quot;&gt;&lt;a href=&quot;#1-函数柯里化&quot; class=&quot;headerlink&quot; title=&quot;1. 函数柯里化&quot;&gt;&lt;/a&gt;1. 函数柯里化&lt;/h3&gt;&lt;figure class=&quot;highlight
         
       
     
@@ -106,11 +105,7 @@
       
         
         
-          &lt;h1&gt;小程序&lt;/h1&gt;
-&lt;h2 id=&quot;1-什么是小程序&quot;&gt;1. 什么是小程序&lt;/h2&gt;
-&lt;p&gt;小程序是一个不需要下载和安装的应用。&lt;/p&gt;
-&lt;h2 id=&quot;2-App-小程序-H5对比&quot;&gt;2. App/小程序/H5对比&lt;/h2&gt;
-&lt;h3
+          &lt;h1 id=&quot;小程序&quot;&gt;&lt;a href=&quot;#小程序&quot; class=&quot;headerlink&quot; title=&quot;小程序&quot;&gt;&lt;/a&gt;小程序&lt;/h1&gt;&lt;h2 id=&quot;1-什么是小程序&quot;&gt;&lt;a href=&quot;#1-什么是小程序&quot; class=&quot;headerlink&quot; title=&quot;1.
         
       
     
@@ -253,6 +248,7 @@
         
         
           &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
 &lt;p&gt;这里我找了一些代表性的问题，试试看你能回答多少 😉&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;问：Webpack 配置中用过哪些 Loader
@@ -282,14 +278,7 @@
       
         
         
-          &lt;h1&gt;常见面试智力题总结&lt;/h1&gt;
-&lt;p&gt;本部分主要是笔者在练习常见面试智力题所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h2 id=&quot;常见智力题&quot;&gt;常见智力题&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;时针与分针夹角度数问题？&lt;/p&gt;
-&lt;p&gt;分析：&lt;/p&gt;
-&lt;figure
+          &lt;h1 id=&quot;常见面试智力题总结&quot;&gt;&lt;a href=&quot;#常见面试智力题总结&quot; class=&quot;headerlink&quot;
         
       
     
@@ -316,13 +305,8 @@
       
         
         
-          &lt;h2 id=&quot;常用工具知识总结&quot;&gt;常用工具知识总结&lt;/h2&gt;
-&lt;p&gt;本部分主要是笔者关于常用工具所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h3 id=&quot;目录&quot;&gt;目录&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#git&quot;&gt;GIT&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a
+          &lt;h2 id=&quot;常用工具知识总结&quot;&gt;&lt;a href=&quot;#常用工具知识总结&quot; class=&quot;headerlink&quot; title=&quot;常用工具知识总结&quot;&gt;&lt;/a&gt;常用工具知识总结&lt;/h2&gt;&lt;p&gt;本部分主要是笔者关于常用工具所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
+&lt;h3
         
       
     
@@ -349,11 +333,7 @@
       
         
         
-          &lt;h1&gt;计算机操作系统&lt;/h1&gt;
-&lt;p&gt;本部分主要是笔者在学习现代操作系统和一些相关面试题所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h2 id=&quot;现代操作系统阅读笔记&quot;&gt;现代操作系统阅读笔记&lt;/h2&gt;
-&lt;h3 id=&quot;第一章-引论&quot;&gt;第一章 引论&lt;/h3&gt;
-&lt;h4
+          &lt;h1 id=&quot;计算机操作系统&quot;&gt;&lt;a href=&quot;#计算机操作系统&quot; class=&quot;headerlink&quot;
         
       
     
@@ -380,13 +360,7 @@
       
         
         
-          &lt;h1&gt;剑指 offer 思路总结&lt;/h1&gt;
-&lt;p&gt;本部分主要是笔者在练习剑指 offer 时所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h2 id=&quot;题目&quot;&gt;题目&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;二维数组中的查找&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure
+          &lt;h1 id=&quot;剑指-offer-思路总结&quot;&gt;&lt;a href=&quot;#剑指-offer-思路总结&quot; class=&quot;headerlink&quot; title=&quot;剑指 offer 思路总结&quot;&gt;&lt;/a&gt;剑指 offer 思路总结&lt;/h1&gt;&lt;p&gt;本部分主要是笔者在练习剑指 offer
         
       
     
@@ -413,11 +387,7 @@
       
         
         
-          &lt;h1&gt;计算机网络知识总结&lt;/h1&gt;
-&lt;p&gt;本部分主要是笔者在复习计算机网络相关知识和一些相关面试题时所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h2 id=&quot;目录&quot;&gt;目录&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a
+          &lt;h1 id=&quot;计算机网络知识总结&quot;&gt;&lt;a href=&quot;#计算机网络知识总结&quot; class=&quot;headerlink&quot;
         
       
     
@@ -444,11 +414,7 @@
       
         
         
-          &lt;h2 id=&quot;HTML-面试知识点总结&quot;&gt;HTML 面试知识点总结&lt;/h2&gt;
-&lt;p&gt;本部分主要是笔者在复习 HTML 相关知识和一些相关面试题时所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h3 id=&quot;目录&quot;&gt;目录&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a
+          &lt;h2 id=&quot;HTML-面试知识点总结&quot;&gt;&lt;a href=&quot;#HTML-面试知识点总结&quot; class=&quot;headerlink&quot; title=&quot;HTML 面试知识点总结&quot;&gt;&lt;/a&gt;HTML 面试知识点总结&lt;/h2&gt;&lt;p&gt;本部分主要是笔者在复习 HTML
         
       
     
@@ -475,11 +441,7 @@
       
         
         
-          &lt;h2 id=&quot;CSS-面试知识点总结&quot;&gt;CSS 面试知识点总结&lt;/h2&gt;
-&lt;p&gt;本部分主要是笔者在复习 CSS 相关知识和一些相关面试题时所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h3 id=&quot;目录&quot;&gt;目录&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a
+          &lt;h2 id=&quot;CSS-面试知识点总结&quot;&gt;&lt;a href=&quot;#CSS-面试知识点总结&quot; class=&quot;headerlink&quot; title=&quot;CSS 面试知识点总结&quot;&gt;&lt;/a&gt;CSS 面试知识点总结&lt;/h2&gt;&lt;p&gt;本部分主要是笔者在复习 CSS
         
       
     
@@ -506,11 +468,8 @@
       
         
         
-          &lt;h1&gt;算法知识总结&lt;/h1&gt;
-&lt;p&gt;本部分主要是笔者在学习算法知识和一些相关面试题所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h2 id=&quot;目录&quot;&gt;目录&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a
+          &lt;h1 id=&quot;算法知识总结&quot;&gt;&lt;a href=&quot;#算法知识总结&quot; class=&quot;headerlink&quot; title=&quot;算法知识总结&quot;&gt;&lt;/a&gt;算法知识总结&lt;/h1&gt;&lt;p&gt;本部分主要是笔者在学习算法知识和一些相关面试题所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
+&lt;h2
         
       
     
@@ -537,9 +496,7 @@
       
         
         
-          &lt;h2 id=&quot;JavaScript-面试知识点总结&quot;&gt;JavaScript 面试知识点总结&lt;/h2&gt;
-&lt;p&gt;本部分主要是笔者在复习 JavaScript 相关知识和一些相关面试题时所做的笔记，如果出现错误，希望大家指出！&lt;/p&gt;
-&lt;h3
+          &lt;h2 id=&quot;JavaScript-面试知识点总结&quot;&gt;&lt;a href=&quot;#JavaScript-面试知识点总结&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 面试知识点总结&quot;&gt;&lt;/a&gt;JavaScript
         
       
     

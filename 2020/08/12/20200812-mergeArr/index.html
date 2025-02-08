@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20200812-mergeArr"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20200812-mergeArr" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   一道简单小题引发的思考
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2020/08/12/20200812-mergeArr/" class="article-date">
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -117,23 +109,29 @@
 <p>给定两个排序后的数组 A 和 B，其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。</p>
 <p>初始化 A 和 B 的元素数量分别为 m 和 n。</p>
 <span id="more"></span>
+
 <p>示例:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>], m = <span class="number">3</span></span><br><span class="line">B = [<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>],       n = <span class="number">3</span></span><br><span class="line">输出: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">说明:</span><br><span class="line">A.<span class="property">length</span> == n + m</span><br></pre></td></tr></table></figure>
+
 <p>看到这题的第一眼感觉是</p>
 <p>就这？？</p>
 <p>然后马不停蹄的敲了起来</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">A</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">m</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">B</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125; Do not return anything, modify A in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> merge = <span class="keyword">function</span>(<span class="params">A, m, B, n</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> resArr = A</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        resArr[m+i] = B[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resArr</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>写完之后发现好像不太对，只是实现了两个数组混合，但是没按大小排序啊。</p>
 <p>easy，我嘴角翘起一抹微笑，js array中有数组排序的方法sort()，于是乎</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">A</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">m</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">B</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125; Do not return anything, modify A in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> merge = <span class="keyword">function</span>(<span class="params">A, m, B, n</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> resArr = A</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        resArr[m+i] = B[i]</span><br><span class="line">    &#125;</span><br><span class="line">    resArr.<span class="title function_">sort</span>()</span><br><span class="line">    <span class="keyword">return</span> resArr</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>run，提交。我仿佛已经看到绿色的运行通过了。</p>
 <p>结果嘛。肯定是不对的。</p>
 <p>纳尼？</p>
 <p>看过文档之后，才发现，原来sort()排序负数需要加上函数参数，是从大到小还是从小到大。</p>
 <p>例子中是这样的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> points = [<span class="number">40</span>,<span class="number">100</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">25</span>,<span class="number">10</span>];</span><br><span class="line">points.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;<span class="keyword">return</span> b-a&#125;); <span class="comment">// 大到小</span></span><br><span class="line">points.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;<span class="keyword">return</span> a-b&#125;); <span class="comment">// 小到大</span></span><br></pre></td></tr></table></figure>
+
 <p>修改一哈</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">A</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">m</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">B</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125; Do not return anything, modify A in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> merge = <span class="keyword">function</span>(<span class="params">A, m, B, n</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> resArr = A</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">        resArr[m+i] = B[i]</span><br><span class="line">    &#125;</span><br><span class="line">    resArr.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;<span class="keyword">return</span> a-b&#125;)</span><br><span class="line">    <span class="keyword">return</span> resArr</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>run，OK。</p>
 <p>本文完结撒花！</p>
 <hr>
@@ -145,10 +143,12 @@
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/73714165">知乎-十大算法排序（带动图）</a></p>
 <p>不过，本文并不是想说这十种排序算法，而是在查看冒泡排序中发现了这样一种写法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bubbleSort</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> len = arr.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>]) &#123;        <span class="comment">// 相邻元素两两对比</span></span><br><span class="line">                <span class="keyword">var</span> temp = arr[j+<span class="number">1</span>];        <span class="comment">// 元素交换</span></span><br><span class="line">                arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">                arr[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>直接对传入参数进行赋值修改，这不禁深深困扰了我，不是说不能对传入的参数直接赋值直接操作么？为什么可以这么写</p>
 <p>至此，本文正式进入正文（没想到吧，啊哈哈哈哈）</p>
 <p>首先，看下面几个例子</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例1</span></span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    a=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [1,2,3]</span></span><br><span class="line"><span class="comment">// 例2</span></span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    a.<span class="title function_">push</span>(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [1,2,3,4]</span></span><br><span class="line"><span class="comment">// 例3</span></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">2</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a</span><br><span class="line">    b = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,<span class="title function_">foo</span>(a)); <span class="comment">// 2 3</span></span><br></pre></td></tr></table></figure>
+
 <p>发现不同了没？都是同时对传入的参数进行修改，例1中运行之后打印出来的a没有任何变化，而例2中却改变了原数组。</p>
 <p>这个情况不禁让我陷入了深深的沉思，为什么呢？</p>
 <p>对此，在查阅了资料之后我得出了如下结论</p>
@@ -156,6 +156,7 @@
 <p>有例外吗？<strong>有的</strong></p>
 <p><strong>在函数内部调用传入参数的内部方法，或直接修改变量的基本数据类型，会直接修改外部变量</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例4</span></span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    a[<span class="number">0</span>] = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [3,2,3]</span></span><br><span class="line"><span class="comment">// 例5</span></span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    a.<span class="title function_">push</span>(<span class="number">4</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [1,2,3,4]</span></span><br><span class="line"><span class="comment">// 例6</span></span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a</span><br><span class="line">    b[<span class="number">0</span>] = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a,<span class="title function_">foo</span>(a)); <span class="comment">// [3,2,3]，[3,2,3]</span></span><br></pre></td></tr></table></figure>
+
 <p>对此，比较好的做法是什么呢？</p>
 <p>个人认为，如果参数是简单数据类型，可以直接进行操作，不会对全局变量产生影响，如果是复杂数据类型（Obj，Array），如果不希望对全局变量产生印象，最好还是在内部对参数进行深拷贝，然后再进行操作。</p>
  
@@ -170,8 +171,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -220,8 +220,7 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -292,7 +291,6 @@
   }
 </style>
 
- 
      
 </article>
 

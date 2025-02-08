@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20210713-util"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20210713-util" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   公共方法
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2021/07/13/20210713-util/" class="article-date">
@@ -79,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">631</span>
+            <span class="post-count">697</span>
         </span>
     </span>
 
@@ -88,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -115,30 +107,31 @@
       </script> -->
       <p>本文记录一下自己封装的公共方法。</p>
 <span id="more"></span>
-<pre><code class="language-javascript">// 获取地址栏参数，稳定，鲁棒性强！
+
+<pre><code class="javascript">// 获取地址栏参数，稳定，鲁棒性强！
 export function getUrlParams() &#123;
   let urlParams = decodeURI(window.location.search + window.location.hash);
   let resObj = &#123;&#125;;
   urlParams = urlParams
-    .replace(/\//g, '')
-    .replace(/\?/g, '&amp;')
-    .replace(/#/g, '&amp;')
-    .split('&amp;')
+    .replace(/\//g, &#39;&#39;)
+    .replace(/\?/g, &#39;&amp;&#39;)
+    .replace(/#/g, &#39;&amp;&#39;)
+    .split(&#39;&amp;&#39;)
     .filter((item) =&gt; &#123;
-      return item.includes('=');
+      return item.includes(&#39;=&#39;);
     &#125;);
   for (let i = urlParams.length - 1; i &gt;= 0; i--) &#123;
-    let keyValueArr = urlParams[i].split('=');
+    let keyValueArr = urlParams[i].split(&#39;=&#39;);
     let key = keyValueArr[0];
     let value = keyValueArr[1];
-    if (Object.prototype.toString.apply(resObj[key]) === '[object Undefined]') &#123;
+    if (Object.prototype.toString.apply(resObj[key]) === &#39;[object Undefined]&#39;) &#123;
       resObj[key] = value;
-    &#125; else if (Object.prototype.toString.apply(resObj[key]) === '[object String]') &#123;
+    &#125; else if (Object.prototype.toString.apply(resObj[key]) === &#39;[object String]&#39;) &#123;
       let temp = resObj[key];
       resObj[key] = [];
       resObj[key].push(temp);
       resObj[key].push(value);
-    &#125; else if (Object.prototype.toString.apply(resObj[key]) === '[object Array]') &#123;
+    &#125; else if (Object.prototype.toString.apply(resObj[key]) === &#39;[object Array]&#39;) &#123;
       resObj[key].push(value);
     &#125;
   &#125;
@@ -153,55 +146,55 @@ http://fishpano.com/Discover/share=998?id=998&amp;ff=776fdv#hash/?array=[1,2,3]?
 // 检测传入参数的类型
 export const judgeType = &#123;
   isArray: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object Array]';
+    return Object.prototype.toString.apply(param) === &#39;[object Array]&#39;;
   &#125;,
   isString: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object String]';
+    return Object.prototype.toString.apply(param) === &#39;[object String]&#39;;
   &#125;,
   isNumber: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object Number]';
+    return Object.prototype.toString.apply(param) === &#39;[object Number]&#39;;
   &#125;,
   isNull: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object Null]';
+    return Object.prototype.toString.apply(param) === &#39;[object Null]&#39;;
   &#125;,
   isUndifined: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object Undefined]';
+    return Object.prototype.toString.apply(param) === &#39;[object Undefined]&#39;;
   &#125;,
   isFunction: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object Function]';
+    return Object.prototype.toString.apply(param) === &#39;[object Function]&#39;;
   &#125;,
   isBoolean: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object Boolean]';
+    return Object.prototype.toString.apply(param) === &#39;[object Boolean]&#39;;
   &#125;,
   isObject: (param) =&gt; &#123;
-    return Object.prototype.toString.apply(param) === '[object Object]';
+    return Object.prototype.toString.apply(param) === &#39;[object Object]&#39;;
   &#125;,
   getType: (param) =&gt; &#123;
     let type = Object.prototype.toString.apply(param);
     switch (type) &#123;
-      case '[object Array]':
-        return 'Array';
+      case &#39;[object Array]&#39;:
+        return &#39;Array&#39;;
         break;
-      case '[object String]':
-        return 'String';
+      case &#39;[object String]&#39;:
+        return &#39;String&#39;;
         break;
-      case '[object Number]':
-        return 'Number';
+      case &#39;[object Number]&#39;:
+        return &#39;Number&#39;;
         break;
-      case '[object Null]':
-        return 'Null';
+      case &#39;[object Null]&#39;:
+        return &#39;Null&#39;;
         break;
-      case '[object Undefined]':
-        return 'Undefined';
+      case &#39;[object Undefined]&#39;:
+        return &#39;Undefined&#39;;
         break;
-      case '[object Function]':
-        return 'Function';
+      case &#39;[object Function]&#39;:
+        return &#39;Function&#39;;
         break;
-      case '[object Boolean]':
-        return 'Boolean';
+      case &#39;[object Boolean]&#39;:
+        return &#39;Boolean&#39;;
         break;
-      case '[object Object]':
-        return 'Object';
+      case &#39;[object Object]&#39;:
+        return &#39;Object&#39;;
         break;
       default:
         break;
@@ -289,8 +282,7 @@ Date.prototype.Format = function(fmt) &#123;
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -339,8 +331,7 @@ Date.prototype.Format = function(fmt) &#123;
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%B9%E6%B3%95/" rel="tag">方法</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -411,7 +402,6 @@ Date.prototype.Format = function(fmt) &#123;
   }
 </style>
 
- 
      
 </article>
 

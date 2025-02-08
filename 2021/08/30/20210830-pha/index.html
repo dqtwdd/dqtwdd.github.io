@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20210830-pha"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20210830-pha" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   pha工作流程
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2021/08/30/20210830-pha/" class="article-date">
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -115,11 +107,14 @@
       </script> -->
       <p>记录一下 pha 的工作流程。</p>
 <span id="more"></span>
+
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ---on branch master ---</span></span><br><span class="line"><span class="comment">// 在master分枝上</span></span><br><span class="line">git checkout -b &lt;your <span class="keyword">new</span> branch&gt; <span class="comment">// 新建分支</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// —-on your branch—-</span></span><br><span class="line"><span class="comment">// 在你自己新建的分支开发，完成后进行后面操作：</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m &lt;some desciption&gt;</span><br><span class="line">git push -u origin &lt;your branch&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推送完成后执行arc命令</span></span><br><span class="line">arc diff master <span class="comment">//这个命令输入后应该会让你输入Summary(必填)/Reviewer(必填)/Surbscriber等信息。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 输入完成后 按 ctrl+x 退出并保存 等审批完成后执行下面命令</span></span><br><span class="line">arc land —-onto master <span class="comment">// 正常这样就能推送到master分支了。但是如果是两个人并行开发，在你开发期间有别人推送到master分支的话，就比较麻烦，后续总结出经验之后会更新。</span></span><br></pre></td></tr></table></figure>
+
 <p>注意点：</p>
 <p>1.arc land 操作成功后会删除本地 git stash 的所有内容！！！所以切记 arc land 之前将 stash 的内容妥善保存，建议复制到本地。</p>
 <p>2.arc land 操作将会删除你在本地的分支，并跳转到 maste 分支，所以建议将本地分支推送到远程保证代码不会丢失，可以定期清理远程分支。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ---on branch master---</span></span><br><span class="line">arc feature my-<span class="keyword">new</span>-feature <span class="comment">// arc命令，创建新分支。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ---on your branch---</span></span><br><span class="line"><span class="comment">// 在你自己新建的分支开发，完成后进行后面操作：</span></span><br><span class="line"><span class="comment">// 在git add .之前，如果别人提交过的话，可以使用 git pll origin master合并本地代码和线上最新的代码。</span></span><br><span class="line">git add .</span><br><span class="line">arc diff</span><br><span class="line"><span class="comment">// arc diff 之后会出现下图的提示，让你输入commit信息，你也可以自己 git commit -m &quot;xxx&quot;之后再arc diff，这样就直接进入输入summary的环节了，不需要输入commit信息。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 输入完成后 按 ctrl+x 退出并保存 等审批完成后执行下面命令</span></span><br><span class="line">arc land —-onto master</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://dqtwdd.top/cdn/img/pha.gif" alt="pha"></p>
  
       <!-- reward -->
@@ -133,8 +128,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -183,26 +177,25 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2021/08/30/20210830-waterMark/" class="article-nav-link">
+      <a href="/2021/09/26/20210926-slidingWindow/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            加水印
+            滑动窗口
           
         </div>
       </a>
     
     
-      <a href="/2021/08/16/20210816-wifeInterview/" class="article-nav-link">
+      <a href="/2021/08/30/20210830-waterMark/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">董大宝的面试算法总结</div>
+        <div class="article-nav-title">加水印</div>
       </a>
     
   </nav>
@@ -255,7 +248,6 @@
   }
 </style>
 
- 
      
 </article>
 

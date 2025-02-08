@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20210119-work2"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20210119-work2" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   工作相关记录2
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2021/01/19/20210119-work2/" class="article-date">
@@ -79,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">997</span>
+            <span class="post-count">1k</span>
         </span>
     </span>
 
@@ -104,7 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -117,8 +109,8 @@
       </script> -->
       <p>此篇博客用来记录工作中遇到的的问题以及解决方案。</p>
 <span id="more"></span>
-<h3 id="20-模块化">20.模块化</h3>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fayin/p/6831071.html">module.exports 与 exports，export 与 export default 之间的关系和区别</a></p>
+
+<h3 id="20-模块化"><a href="#20-模块化" class="headerlink" title="20.模块化"></a>20.模块化</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fayin/p/6831071.html">module.exports 与 exports，export 与 export default 之间的关系和区别</a></p>
 <p>首先我们要明白一个前提，CommonJS 模块规范和 ES6 模块规范完全是两种不同的概念。</p>
 <p>CommonJS 模块规范</p>
 <p>Node 应用由模块组成，采用 CommonJS 模块规范。</p>
@@ -133,7 +125,7 @@ module.exports.addX = addX;
 </code></pre>
 <p>上面代码通过 module.exports 输出变量 x 和函数 addX。</p>
 <p>require 方法用于加载模块。</p>
-<pre><code>var example = require('./example.js');
+<pre><code>var example = require(&#39;./example.js&#39;);
 
 console.log(example.x); // 5
 console.log(example.addX(1)); // 6
@@ -149,14 +141,14 @@ console.log(example.addX(1)); // 6
 exports = function a() &#123;&#125;;
 
 // b.js
-const a = require('./a.js') // a 是一个空对象
+const a = require(&#39;./a.js&#39;) // a 是一个空对象
 </code></pre>
 <p>参考 the-difference-between-module-exports-and-exports</p>
 <p>ES6 模块规范</p>
 <p>不同于 CommonJS，ES6 使用 export 和 import 来导出、导入模块。</p>
 <pre><code>// profile.js
-var firstName = 'Michael';
-var lastName = 'Jackson';
+var firstName = &#39;Michael&#39;;
+var lastName = &#39;Jackson&#39;;
 var year = 1958;
 
 export &#123;firstName, lastName, year&#125;;
@@ -177,25 +169,27 @@ export &#123;n as m&#125;;
 <p>使用 export default 命令，为模块指定默认输出。</p>
 <pre><code>// export-default.js
 export default function () &#123;
-  console.log('foo');
+  console.log(&#39;foo&#39;);
 &#125;
 </code></pre>
-<p>相关链接：<br>
-CommonJS 规范，<a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/nodejs/module.html">http://javascript.ruanyifeng.com/nodejs/module.html</a><br>
-ES6 Module 的语法，<a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/#docs/module">http://es6.ruanyifeng.com/#docs/module</a></p>
-<h3 id="21-Vue-set">21.Vue.set</h3>
-<p>在我们项目开发过程中，实例中的数据类型可以是对象、数组等。在对象中，某个属性值发生更改时，我们可以通过对象的深度监听，以达到重新渲染页面的需求。</p>
+<p>相关链接：<br>CommonJS 规范，<a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/nodejs/module.html">http://javascript.ruanyifeng.com/nodejs/module.html</a><br>ES6 Module 的语法，<a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/#docs/module">http://es6.ruanyifeng.com/#docs/module</a></p>
+<h3 id="21-Vue-set"><a href="#21-Vue-set" class="headerlink" title="21.Vue.set"></a>21.Vue.set</h3><p>在我们项目开发过程中，实例中的数据类型可以是对象、数组等。在对象中，某个属性值发生更改时，我们可以通过对象的深度监听，以达到重新渲染页面的需求。</p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">objVal</span>: &#123;</span><br><span class="line">          <span class="attr">name</span>: <span class="string">&#x27;obj&#x27;</span>,</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;obj&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">watch</span>:&#123;</span><br><span class="line">      <span class="attr">objVal</span>:&#123;</span><br><span class="line">        <span class="title function_">handler</span>(<span class="params">val,oldval</span>)&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">deep</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>:&#123;</span><br><span class="line">      <span class="title function_">changeObj</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">objVal</span>.<span class="property">name</span> = <span class="string">&#x27;newobj&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
 <p>但是，在使用同一种方式进行数组值更改监听时，这种做法是无效的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">arrList</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="attr">arrList</span>: &#123;</span><br><span class="line">      <span class="title function_">handler</span>(<span class="params">val, oldval</span>) &#123;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">deep</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">changeArr</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// 无效</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">arrList</span>[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
 <p>上述用以监听数组值变化的方法是无效的，vue 是不会响应数据变化而重新去渲染页面。在 vue 中仅需要通过修改赋值语句的方式，即可让 vue 响应数组数据的变化。具体操作如下：</p>
 <p>使用方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue.set</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">set</span>(vm.<span class="property">items</span>, indexOfItem, newValue);</span><br><span class="line"><span class="comment">// Array.prototype.splice</span></span><br><span class="line">vm.<span class="property">items</span>.<span class="title function_">splice</span>(indexOfItem, <span class="number">1</span>, newValue);</span><br></pre></td></tr></table></figure>
+
 <p>具体使用案例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">arrList</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">changeArr</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// this.arrList[0] = 10;</span></span><br><span class="line">      <span class="comment">// 修改为：</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">arrList</span>.<span class="title function_">splice</span>(<span class="number">0</span>, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
 <p>或：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">arrList</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">changeArr</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// this.arrList[0] = 10;</span></span><br><span class="line">      <span class="comment">// 修改为：</span></span><br><span class="line">      <span class="variable language_">this</span>.$set(<span class="variable language_">this</span>.<span class="property">arrList</span>, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
 <p>以上两种方式，均可达到监听数组值变化的效果。</p>
  
       <!-- reward -->
@@ -209,8 +203,7 @@ ES6 Module 的语法，<a target="_blank" rel="noopener" href="http://es6.ruanyi
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -259,8 +252,7 @@ ES6 Module 的语法，<a target="_blank" rel="noopener" href="http://es6.ruanyi
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -331,7 +323,6 @@ ES6 Module 的语法，<a target="_blank" rel="noopener" href="http://es6.ruanyi
   }
 </style>
 
- 
      
 </article>
 

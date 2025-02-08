@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20200908-XSS"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20200908-XSS" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   XSS学习汇总
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2020/09/08/20200908-XSS/" class="article-date">
@@ -79,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">576</span>
+            <span class="post-count">573</span>
         </span>
     </span>
 
@@ -104,7 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -123,24 +115,19 @@
 <li>XSS预防方式</li>
 <li>参考文献</li>
 </ol>
-<h2 id="什么是XSS">什么是XSS</h2>
-<p>XSS又叫CSS (Cross Site Script) ,跨站脚本攻击。 它指是恶意攻击者往Web页面里插入恶意html代码,当用户浏览该页之时,嵌入Web里面的html代码会被执行。</p>
-<h2 id="XSS的常见攻击方式">XSS的常见攻击方式</h2>
-<p>XSS攻击分为两（三）种（DOM型攻击不太熟悉，所以没写）</p>
+<h2 id="什么是XSS"><a href="#什么是XSS" class="headerlink" title="什么是XSS"></a>什么是XSS</h2><p>XSS又叫CSS (Cross Site Script) ,跨站脚本攻击。 它指是恶意攻击者往Web页面里插入恶意html代码,当用户浏览该页之时,嵌入Web里面的html代码会被执行。</p>
+<h2 id="XSS的常见攻击方式"><a href="#XSS的常见攻击方式" class="headerlink" title="XSS的常见攻击方式"></a>XSS的常见攻击方式</h2><p>XSS攻击分为两（三）种（DOM型攻击不太熟悉，所以没写）</p>
 <ul>
-<li>映射型（非持久）	映射型攻击就是通过恶意闭合标签然后插入恶意JavaScript代码获取用户信息。通常黑客通过发送恶意链接来获取用户的cookie信息，以此访问用户的账户，达到攻击的目的。</li>
+<li>映射型（非持久）    映射型攻击就是通过恶意闭合标签然后插入恶意JavaScript代码获取用户信息。通常黑客通过发送恶意链接来获取用户的cookie信息，以此访问用户的账户，达到攻击的目的。</li>
 <li>储存型  （持久）     储存型是持久型攻击，黑客在找到漏洞后将恶意代码发送到服务器（比如放在用户名中等等），所有访问受攻击站点的用户在无意中运行到恶意代码后都会受到攻击。所以储存型攻击的危害要大于映射型攻击。</li>
 </ul>
-<h2 id="XSS攻击常见的预防方式">XSS攻击常见的预防方式</h2>
-<p>根据我浅薄的网络安全知识，一般想要达到攻击的目的必不可少的步骤就是需要找到网站的漏洞，而漏洞一般就是前段没有对用户输入内容进行过滤。因此前段如果在所有用户输入时进行一些必要的转义和过滤，可以预防大部分菜鸡黑客的攻击。</p>
-<h2 id="XSS预防方式">XSS预防方式</h2>
-<ul>
-<li>输入过滤 过滤关键词如 JavaScript、&lt;、&quot;、’ 等字符。需要注意的是也要对输入字母大小写情况和输入的是转码后的情况进行考虑。</li>
+<h2 id="XSS攻击常见的预防方式"><a href="#XSS攻击常见的预防方式" class="headerlink" title="XSS攻击常见的预防方式"></a>XSS攻击常见的预防方式</h2><p>根据我浅薄的网络安全知识，一般想要达到攻击的目的必不可少的步骤就是需要找到网站的漏洞，而漏洞一般就是前段没有对用户输入内容进行过滤。因此前段如果在所有用户输入时进行一些必要的转义和过滤，可以预防大部分菜鸡黑客的攻击。</p>
+<h2 id="XSS预防方式"><a href="#XSS预防方式" class="headerlink" title="XSS预防方式"></a>XSS预防方式</h2><ul>
+<li>输入过滤 过滤关键词如 JavaScript、&lt;、”、’ 等字符。需要注意的是也要对输入字母大小写情况和输入的是转码后的情况进行考虑。</li>
 <li>改成纯前端渲染，把代码和数据分隔开。</li>
 <li>对 HTML 做充分转义。</li>
 </ul>
-<h1>参考文献</h1>
-<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/09/27/fe-security.html">美团XSS安全系列</a></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2018/09/27/fe-security.html">美团XSS安全系列</a></p>
 <p><a target="_blank" rel="noopener" href="https://xss.tesla-space.com/">XSS靶场</a></p>
 <p><a target="_blank" rel="noopener" href="http://xssaq.com/wooyun/">乌云伤心的瘦子系列</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.99lb.net/8467a.html">在我学习过程中费尽心机找到的实体靶场23333</a></p>
@@ -157,8 +144,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -207,26 +193,25 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS/" rel="tag">XSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2020/09/08/20200908-dynamicPlanning/" class="article-nav-link">
+      <a href="/2020/09/15/20200915-findMaxForm/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            动态规划题目合集[按摩师，打家劫舍，判断子序列，连续的子数组的和]
+            一和零
           
         </div>
       </a>
     
     
-      <a href="/2020/09/04/20200904-maxSubArray/" class="article-nav-link">
+      <a href="/2020/09/08/20200908-dynamicPlanning/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">最大子序和</div>
+        <div class="article-nav-title">动态规划题目合集[按摩师，打家劫舍，判断子序列，连续的子数组的和]</div>
       </a>
     
   </nav>
@@ -279,7 +264,6 @@
   }
 </style>
 
- 
      
 </article>
 

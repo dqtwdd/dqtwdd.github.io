@@ -48,23 +48,15 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-20200821-lengthOfLongestSubstring"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
+  <article id="post-20200821-lengthOfLongestSubstring" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   <div class="article-inner">
     
-    <header class="article-header">
-       
+    <header class="article-header"> 
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
   无重复字符的最长子串
 </h1>
  
-
-    </header>
+</header>
      
     <div class="article-meta">
       <a href="/2020/08/21/20200821-lengthOfLongestSubstring/" class="article-date">
@@ -102,7 +94,7 @@
     <div class="article-entry" itemprop="articleBody">
        
  
-      <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <!-- <script src="//cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
       <!-- <script src="//dqtwdd.top/cdn/article-insert/article-insert.js?v_0.2"></script> -->
       <!-- <script>
         if (location.pathname.length > 1) {
@@ -115,9 +107,10 @@
       </script> -->
       <p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
 <span id="more"></span>
+
 <p>示例 1:</p>
 <p>输入: “abcabcbb”</p>
-<p>输出: 3</p>
+<p>输出: 3 </p>
 <p>解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。</p>
 <p>示例 2:</p>
 <p>输入: “bbbbb”</p>
@@ -127,13 +120,14 @@
 <p>输入: “pwwkew”</p>
 <p>输出: 3</p>
 <p>解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。</p>
-<p>请注意，你的答案必须是 子串 的长度，“pwke” 是一个子序列，不是子串。</p>
+<p>     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。</p>
 <p>emmmmmm…</p>
 <p>这道题嘛。本来是不太会的，可是做了另一道比较类似的题，最长回文子字符串，然后这道题也就会了。</p>
 <p>但是坏处是，虽然之前的思路可以给我一个思考的方向，让我做出了这道题，但是同时也束缚了我的思路，导致我的解法并不是最优解。</p>
 <p>还是媳妇厉害。</p>
 <p>先贴上我自己的写法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> lengthOfLongestSubstring = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> longestRes = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &lt; s.<span class="property">length</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">let</span> subStr = s.<span class="title function_">slice</span>(i,j)</span><br><span class="line">      <span class="keyword">let</span> tempLetter = s[j]</span><br><span class="line">      <span class="keyword">if</span> (!subStr.<span class="title function_">includes</span>(tempLetter)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j - i &gt; longestRes) &#123;</span><br><span class="line">          longestRes = j - i</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (s.<span class="property">length</span> === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> longestRes + <span class="number">1</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>思想就是两层遍历，然后判断当前最长无重复字符串中是否有指针指向的这个字母，如果没有并且当前长度大于当前最大长度就存一下最长长度，否则就终止，外层指针往前挪一个。</p>
 <p>这个办法显然是不够优秀的，更好的做法是在重复时直接将指针移向当前最长字符串中与当前字符重复的位置，然后继续向前。</p>
 <p>这么优秀的办法，老婆一次做出来。下面贴一下她的写法。</p>
@@ -150,8 +144,7 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
+    <footer class="article-footer"> 
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -200,8 +193,7 @@
 
 <div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
+</footer>
   </div>
 
    
@@ -272,7 +264,6 @@
   }
 </style>
 
- 
      
 </article>
 
