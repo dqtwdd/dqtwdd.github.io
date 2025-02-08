@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">485</span>
+            <span class="post-count">494</span>
         </span>
     </span>
 
@@ -113,22 +113,31 @@
           console.log('pathname', title, location.pathname.length);
         }
       </script> -->
-      <p>在一个「平衡字符串」中，’L’ 和 ‘R’ 字符的数量是相同的。</p>
+      <p>在一个「平衡字符串」中，‘L’ 和 ‘R’ 字符的数量是相同的。</p>
 <p>给出一个平衡字符串  s，请你将它分割成尽可能多的平衡字符串。</p>
 <p>返回可以通过分割得到的平衡字符串的最大数量。</p>
 <span id="more"></span>
-
-<p>示例 1：<br>输入：s = “RLRRLLRLRL”<br>输出：4<br>解释：s 可以分割为 “RL”, “RRLL”, “RL”, “RL”, 每个子字符串中都包含相同数量的 ‘L’ 和 ‘R’。</p>
-<p>示例 2：<br>输入：s = “RLLLLRRRLR”<br>输出：3<br>解释：s 可以分割为 “RL”, “LLLRRR”, “LR”, 每个子字符串中都包含相同数量的 ‘L’ 和 ‘R’。</p>
-<p>示例 3：<br>输入：s = “LLLLRRRR”<br>输出：1<br>解释：s 只能保持原样 “LLLLRRRR”.</p>
-<p>提示：<br>1 &lt;= s.length &lt;= 1000<br>s[i] = ‘L’ 或 ‘R’<br>分割得到的每个字符串都必须是平衡字符串。</p>
-<p>这道题题目描述的有点不清晰，按照给的示例，应该所有的平衡字符串都是左右对称的，然鹅按照题解，只要连续的几个”L”的数量和”R”相同即可。</p>
-<p>先是按照我自己的思路搞了一下，我的思路就是所有平衡字符串一定有一堆相邻的”LR”或者”RL”。以这个为判断平衡字符串的个数。</p>
+<p>示例 1：<br>
+输入：s = “RLRRLLRLRL”<br>
+输出：4<br>
+解释：s 可以分割为 “RL”, “RRLL”, “RL”, “RL”, 每个子字符串中都包含相同数量的 ‘L’ 和 ‘R’。</p>
+<p>示例 2：<br>
+输入：s = “RLLLLRRRLR”<br>
+输出：3<br>
+解释：s 可以分割为 “RL”, “LLLRRR”, “LR”, 每个子字符串中都包含相同数量的 ‘L’ 和 ‘R’。</p>
+<p>示例 3：<br>
+输入：s = “LLLLRRRR”<br>
+输出：1<br>
+解释：s 只能保持原样 “LLLLRRRR”.</p>
+<p>提示：<br>
+1 &lt;= s.length &lt;= 1000<br>
+s[i] = ‘L’ 或 ‘R’<br>
+分割得到的每个字符串都必须是平衡字符串。</p>
+<p>这道题题目描述的有点不清晰，按照给的示例，应该所有的平衡字符串都是左右对称的，然鹅按照题解，只要连续的几个&quot;L&quot;的数量和&quot;R&quot;相同即可。</p>
+<p>先是按照我自己的思路搞了一下，我的思路就是所有平衡字符串一定有一堆相邻的&quot;LR&quot;或者&quot;RL&quot;。以这个为判断平衡字符串的个数。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> balancedStringSplit = <span class="keyword">function</span> (<span class="params">s</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> sArr = s.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> tempArr = []</span><br><span class="line">  <span class="keyword">let</span> balancedStrNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; sArr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (tempArr.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> tempSum = sArr[i] + tempArr[tempArr.<span class="property">length</span> - <span class="number">1</span>]</span><br><span class="line">      <span class="keyword">if</span> (tempSum === <span class="string">&#x27;LR&#x27;</span> || tempSum === <span class="string">&#x27;RL&#x27;</span>) &#123;</span><br><span class="line">        balancedStrNum += <span class="number">1</span></span><br><span class="line">        tempArr = []</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    tempArr.<span class="title function_">push</span>(sArr[i])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> balancedStrNum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>然后根据题解的思路又写了一下，很简单。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> balancedStringSplit = <span class="keyword">function</span> (<span class="params">s</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> sumArr = <span class="number">0</span></span><br><span class="line">  <span class="keyword">let</span> balancedStrNum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    sumArr += s[i] === <span class="string">&#x27;R&#x27;</span> ? -<span class="number">1</span> : <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> (sumArr === <span class="number">0</span>) balancedStrNum += <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> balancedStrNum</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;LLLLRRRR&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">balancedStringSplit</span>(s))</span><br></pre></td></tr></table></figure>
-
 <p>值得说的就是这个二元运算符的写法，这样就少写了一个 if else。</p>
  
       <!-- reward -->
@@ -274,7 +283,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2018-2024
+        2018-2025
         <i class="ri-heart-fill heart_icon"></i> WangDong
       </li>
     </ul>
@@ -397,13 +406,11 @@
 </div>
     
 <script src="/js/jquery-2.0.3.min.js"></script>
-
-
+ 
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
-
-
+ 
 <script src="/js/tocbot.min.js"></script>
 
 <script>
@@ -416,19 +423,18 @@
     scrollContainer: 'main',
     positionFixedSelector: '.tocbot',
     positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto'
+    fixedSidebarOffset: 'auto',
   });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
 
 <script src="/dist/main.js"></script>
 
 <!-- ImageViewer -->
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     <!-- Background of PhotoSwipe. 
@@ -533,34 +539,27 @@
         })
     }
     viewer_init()
-</script>
-
+</script> 
 <!-- MathJax -->
 
 <!-- Katex -->
 
 <!-- busuanzi  -->
-
-
+ 
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
+ 
 <!-- ClickLove -->
 
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
-
+ 
 <script src="/js/clickBoom2.js"></script>
-
-
+ 
 <!-- CodeCopy -->
-
-
+ 
 <link rel="stylesheet" href="/css/clipboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
   function wait(callback, seconds) {
     var timelag = null;
@@ -614,13 +613,11 @@
     initCopyCode();
   }(window, document);
 </script>
-
-
+ 
 <!-- CanvasBackground -->
-
-
+ 
 <script src="/js/dz.js"></script>
-
+ 
 
 
     

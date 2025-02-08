@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">928</span>
+            <span class="post-count">930</span>
         </span>
     </span>
 
@@ -117,8 +117,8 @@
       </script> -->
       <p>记录一下docker笔记。</p>
 <span id="more"></span>
-
-<h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>两个重要概念：</p>
+<h3 id="1-概念">1. 概念</h3>
+<p>两个重要概念：</p>
 <p>容器Container：容器用来隔离镜像。</p>
 <p>镜像Image：镜像是一个文件，用来创建容器。</p>
 <table>
@@ -128,7 +128,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-d</td>
 <td>以守护进程的方式让容器在后台运行，在这您之 前可能使用的是pm2来守护进程</td>
 </tr>
@@ -166,59 +167,50 @@
 </tr>
 <tr>
 <td>/bin/bash -c “cd /app/vue2 &amp;&amp; node -v &amp;&amp; npm install &amp;&amp; npm run serve”</td>
-<td>/bin/bash：是在让容器分配的虚拟终端以 bash 模式执行命令 -c “”cd /app/vue2 &amp;&amp; node -v &amp;&amp; npm install &amp;&amp; npm run serve：只能执行一条 shell 命令，需要多个命令按需用&amp;&amp;</td>
+<td>/bin/bash：是在让容器分配的虚拟终端以 bash 模式执行命令 -c &quot;&quot;cd /app/vue2 &amp;&amp; node -v &amp;&amp; npm install &amp;&amp; npm run serve：只能执行一条 shell 命令，需要多个命令按需用&amp;&amp;</td>
 </tr>
-</tbody></table>
-<h3 id="2-例子"><a href="#2-例子" class="headerlink" title="2. 例子"></a>2. 例子</h3><ol>
-<li><p>先来一个最基本的例子，体验一下docker：</p>
+</tbody>
+</table>
+<h3 id="2-例子">2. 例子</h3>
 <ol>
-<li><p>新建html文件：</p>
+<li>
+<p>先来一个最基本的例子，体验一下docker：</p>
+<ol>
+<li>
+<p>新建html文件：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--index.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello docker<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
 <ol start="2">
-<li><p>新建 Dockerfile：</p>
+<li>
+<p>新建 Dockerfile：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Dockerfile</span></span><br><span class="line"><span class="variable constant_">FROM</span> nginx</span><br><span class="line"><span class="variable constant_">COPY</span> ./index.<span class="property">html</span> /usr/share/nginx/html/index.<span class="property">html</span></span><br><span class="line"><span class="variable constant_">EXPOSE</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
-
-
 </li>
-</ol>
-<ol start="3">
-<li><p>命令：</p>
+<li>
+<p>命令：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件结构</span></span><br><span class="line">hello-docker</span><br><span class="line">  |____index.<span class="property">html</span></span><br><span class="line">  |____Dockerfile</span><br><span class="line"></span><br><span class="line">cd docker/ # 进入刚刚的目录</span><br><span class="line">docker build ./ -t hello-<span class="attr">docker</span>:<span class="number">1.0</span><span class="number">.0</span> # 打包镜像</span><br></pre></td></tr></table></figure>
-
 <p>不出意外，你应该能得到如下输出：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Sending</span> build context to <span class="title class_">Docker</span> daemon  <span class="number">3.</span>072kB</span><br><span class="line"><span class="title class_">Step</span> <span class="number">1</span>/<span class="number">3</span> : <span class="variable constant_">FROM</span> nginx</span><br><span class="line"> ---&gt; 5a3221f0137b</span><br><span class="line"><span class="title class_">Step</span> <span class="number">2</span>/<span class="number">3</span> : <span class="variable constant_">COPY</span> ./index.<span class="property">html</span> /usr/share/nginx/html/index.<span class="property">html</span></span><br><span class="line"> ---&gt; 1c433edd5891</span><br><span class="line"><span class="title class_">Step</span> <span class="number">3</span>/<span class="number">3</span> : <span class="variable constant_">EXPOSE</span> <span class="number">80</span></span><br><span class="line"> ---&gt; <span class="title class_">Running</span> <span class="keyword">in</span> c2ff9ec2e945</span><br><span class="line"><span class="title class_">Removing</span> intermediate container c2ff9ec2e945</span><br><span class="line"> ---&gt; f6a472c1b0a0</span><br><span class="line"><span class="title class_">Successfully</span> built f6a472c1b0a0</span><br><span class="line"><span class="title class_">Successfully</span> tagged hello-<span class="attr">docker</span>:<span class="number">1.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
-
-
 </li>
-</ol>
-<ol start="4">
-<li><p>运行容器：</p>
+<li>
+<p>运行容器：</p>
 <p>之前的步骤只是通过Dockerfile创建一个镜像。接下来需要根据镜像创建容器：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker container create -p <span class="number">2333</span>:<span class="number">80</span> hello-<span class="attr">docker</span>:<span class="number">1.0</span><span class="number">.0</span></span><br><span class="line">docker container start xxx # xxx 为上一条命令运行得到的结果</span><br></pre></td></tr></table></figure>
-
 <p><code>docker create</code> 是创建一个容器但是不启动</p>
 <p><code>docker start</code>启动一个或多个容器</p>
 <p>以上两个命令可以合并成一个：</p>
 <p><code>docker run</code>创建一个容器并启动</p>
 </li>
-</ol>
-<ol start="5">
-<li><p>进入容器内部：</p>
+<li>
+<p>进入容器内部：</p>
 <p>容器运行后，可以使用如下命令进入容器内部：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container exec -it xxx /bin/bash # xxx 为容器<span class="variable constant_">ID</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
-<li><p>来一个前端启动项目比较完整的例子</p>
+</ol>
+</li>
+<li>
+<p>来一个前端启动项目比较完整的例子</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">yarn create vite docker-study --template vue <span class="comment">// 创建一个vite-vue项目</span></span><br><span class="line">cd docker-study</span><br><span class="line"><span class="title class_">Mkfile</span> <span class="title class_">Dockerfile</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// dockerfile</span></span><br><span class="line"><span class="variable constant_">FROM</span> <span class="attr">node</span>:<span class="number">16.16</span><span class="number">.0</span>-slim  <span class="comment">// 指定模版</span></span><br><span class="line"><span class="variable constant_">COPY</span> . ./demo <span class="comment">// 将当前文件夹拷贝到docker中</span></span><br><span class="line"><span class="variable constant_">WORKDIR</span> /demo <span class="comment">// 指定docker中的工作路径</span></span><br><span class="line">run yarn <span class="comment">// 安装依赖</span></span><br><span class="line"><span class="variable constant_">CMD</span> yarn dev --host <span class="comment">// 启动项目 不加host可能导致映射端口失败</span></span><br><span class="line"></span><br><span class="line">docker container run -p <span class="number">3000</span>:<span class="number">5173</span> vue-demo <span class="comment">// 然后本地就可以看咯</span></span><br></pre></td></tr></table></figure>
-
-
-
-
 </li>
 </ol>
 <p>修改dns<code>$ vim $PREFIX/etc/resolv.conf</code></p>
@@ -366,7 +358,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2018-2024
+        2018-2025
         <i class="ri-heart-fill heart_icon"></i> WangDong
       </li>
     </ul>
@@ -489,13 +481,11 @@
 </div>
     
 <script src="/js/jquery-2.0.3.min.js"></script>
-
-
+ 
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
-
-
+ 
 <script src="/js/tocbot.min.js"></script>
 
 <script>
@@ -508,19 +498,18 @@
     scrollContainer: 'main',
     positionFixedSelector: '.tocbot',
     positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto'
+    fixedSidebarOffset: 'auto',
   });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
 
 <script src="/dist/main.js"></script>
 
 <!-- ImageViewer -->
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     <!-- Background of PhotoSwipe. 
@@ -625,34 +614,27 @@
         })
     }
     viewer_init()
-</script>
-
+</script> 
 <!-- MathJax -->
 
 <!-- Katex -->
 
 <!-- busuanzi  -->
-
-
+ 
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
+ 
 <!-- ClickLove -->
 
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
-
+ 
 <script src="/js/clickBoom2.js"></script>
-
-
+ 
 <!-- CodeCopy -->
-
-
+ 
 <link rel="stylesheet" href="/css/clipboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
   function wait(callback, seconds) {
     var timelag = null;
@@ -706,13 +688,11 @@
     initCopyCode();
   }(window, document);
 </script>
-
-
+ 
 <!-- CanvasBackground -->
-
-
+ 
 <script src="/js/dz.js"></script>
-
+ 
 
 
     

@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">267</span>
+            <span class="post-count">268</span>
         </span>
     </span>
 
@@ -117,12 +117,25 @@
 <p>如果喝掉了酒瓶中的酒，那么酒瓶就会变成空的。</p>
 <p>请你计算 最多 能喝到多少瓶酒。</p>
 <span id="more"></span>
-
-<p>示例 1：<br>输入：numBottles = 9, numExchange = 3<br>输出：13<br>解释：你可以用 3 个空酒瓶兑换 1 瓶酒。<br>所以最多能喝到 9 + 3 + 1 = 13 瓶酒。</p>
-<p>示例 2：<br>输入：numBottles = 15, numExchange = 4<br>输出：19<br>解释：你可以用 4 个空酒瓶兑换 1 瓶酒。<br>所以最多能喝到 15 + 3 + 1 = 19 瓶酒。</p>
-<p>示例 3：<br>输入：numBottles = 5, numExchange = 5<br>输出：6</p>
-<p>示例 4：<br>输入：numBottles = 2, numExchange = 3<br>输出：2</p>
-<p>提示：<br>1 &lt;= numBottles &lt;= 100<br>2 &lt;= numExchange &lt;= 100</p>
+<p>示例 1：<br>
+输入：numBottles = 9, numExchange = 3<br>
+输出：13<br>
+解释：你可以用 3 个空酒瓶兑换 1 瓶酒。<br>
+所以最多能喝到 9 + 3 + 1 = 13 瓶酒。</p>
+<p>示例 2：<br>
+输入：numBottles = 15, numExchange = 4<br>
+输出：19<br>
+解释：你可以用 4 个空酒瓶兑换 1 瓶酒。<br>
+所以最多能喝到 15 + 3 + 1 = 19 瓶酒。</p>
+<p>示例 3：<br>
+输入：numBottles = 5, numExchange = 5<br>
+输出：6</p>
+<p>示例 4：<br>
+输入：numBottles = 2, numExchange = 3<br>
+输出：2</p>
+<p>提示：<br>
+1 &lt;= numBottles &lt;= 100<br>
+2 &lt;= numExchange &lt;= 100</p>
 <p>这道题就很简单咯！就是循环直到当前瓶子的数量小于换酒需要瓶子数量就可以了</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">numBottles</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">numExchange</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> numWaterBottles = <span class="keyword">function</span> (<span class="params">numBottles, numExchange</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> currBottles = numBottles</span><br><span class="line">  <span class="keyword">let</span> maxBottoles = numBottles</span><br><span class="line">  <span class="keyword">while</span> (currBottles &gt;= numExchange) &#123;</span><br><span class="line">    maxBottoles += <span class="number">1</span></span><br><span class="line">    currBottles = currBottles - numExchange + <span class="number">1</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;maxBottoles:&#x27;</span>, maxBottoles, <span class="string">&#x27;currBottles:&#x27;</span>, currBottles)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> maxBottoles</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
  
@@ -194,19 +207,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/08/31/20200831-maxHappyStr/" class="article-nav-link">
+      <a href="/2020/08/31/20200831-canArrange/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            最长快乐字符串
+            检查数组对是否可以被 k 整除
           
         </div>
       </a>
     
     
-      <a href="/2020/08/25/20200825-largestSumAfterKNegations/" class="article-nav-link">
+      <a href="/2020/08/31/20200831-maxHappyStr/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">K 次取反后最大化的数组和</div>
+        <div class="article-nav-title">最长快乐字符串</div>
       </a>
     
   </nav>
@@ -269,7 +282,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2018-2024
+        2018-2025
         <i class="ri-heart-fill heart_icon"></i> WangDong
       </li>
     </ul>
@@ -392,13 +405,11 @@
 </div>
     
 <script src="/js/jquery-2.0.3.min.js"></script>
-
-
+ 
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
-
-
+ 
 <script src="/js/tocbot.min.js"></script>
 
 <script>
@@ -411,19 +422,18 @@
     scrollContainer: 'main',
     positionFixedSelector: '.tocbot',
     positionFixedClass: 'is-position-fixed',
-    fixedSidebarOffset: 'auto'
+    fixedSidebarOffset: 'auto',
   });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
 
 <script src="/dist/main.js"></script>
 
 <!-- ImageViewer -->
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
     <!-- Background of PhotoSwipe. 
@@ -528,34 +538,27 @@
         })
     }
     viewer_init()
-</script>
-
+</script> 
 <!-- MathJax -->
 
 <!-- Katex -->
 
 <!-- busuanzi  -->
-
-
+ 
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
+ 
 <!-- ClickLove -->
 
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
-
+ 
 <script src="/js/clickBoom2.js"></script>
-
-
+ 
 <!-- CodeCopy -->
-
-
+ 
 <link rel="stylesheet" href="/css/clipboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
   function wait(callback, seconds) {
     var timelag = null;
@@ -609,13 +612,11 @@
     initCopyCode();
   }(window, document);
 </script>
-
-
+ 
 <!-- CanvasBackground -->
-
-
+ 
 <script src="/js/dz.js"></script>
-
+ 
 
 
     
